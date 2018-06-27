@@ -14,25 +14,25 @@ export class PatientService {
   constructor(private http:HttpClient) { }
 
   getPatients() {
-    return this.http.get('/server/api/v1/patients');
+    return this.http.get('/server/patients');
   }
 
   getPatient(id: number) {
-    return this.http.get('/server/api/v1/patients/' + id);
+    return this.http.get('/server/patients/' + id);
   }
 
   createPatient(patient) {
     let body = JSON.stringify(patient);
-    return this.http.post('/server/api/v1/patients', body, httpOptions)
+    return this.http.post('/server/patients', body, httpOptions)
   }
 
   deletePatient(id: number) {
-    return this.http.delete('/server/api/v1/patients/' + id);
+    return this.http.delete('/server/patients/' + id);
   }
 
   updatePatient(patient) {
     let body = JSON.stringify(patient);
-    return this.http.put('/server/api/v1/patients', body, httpOptions);
+    return this.http.put('/server/patients', body, httpOptions);
   }
 
 }

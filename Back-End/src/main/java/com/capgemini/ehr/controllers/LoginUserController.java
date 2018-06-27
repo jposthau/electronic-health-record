@@ -18,7 +18,7 @@ import com.capgemini.ehr.models.LoginUser;
 import com.capgemini.ehr.repositories.LoginUserRepository;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/users")
 public class LoginUserController {
 	
 	@Autowired

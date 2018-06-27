@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capgemini.ehr.models.LoginUser;
 import com.capgemini.ehr.models.Patient;
 import com.capgemini.ehr.repositories.PatientRepository;
 	
 @RestController
-@RequestMapping("/api/v1/patients")
+@RequestMapping("/patients")
 public class PatientsController {
 	
 	@Autowired
