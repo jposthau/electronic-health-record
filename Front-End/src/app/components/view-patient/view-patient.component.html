@@ -1,0 +1,42 @@
+<div class="container">
+  <form [formGroup]="patientform" novalidate>
+    <div *ngIf="validMessage != ''">
+      <h3 style="color: red;" class="has-info" color="red">{{validMessage}}</h3>
+    </div>
+    <div class="form-group">
+      <label>Patient ID </label>
+      <input type="text" formControlName="id" [value]="patient.id" required/>
+    </div>
+    <div class="form-group">
+      <label>Name </label>
+      <input type="text" formControlName="name" [value]="patient.name" required/>
+    </div>
+    <div class="form-group">
+      <label>SSN </label>
+      <input type="text" formControlName="ssn" [value]="patient.ssn" required/>
+    </div>
+    <div class="form-group">
+      <label>DOB </label>
+      <input type="text" formControlName="birthDate" [value]="patient.birthDate" required/>
+    </div>
+    <div class="form-group">
+      <label>Phone </label>
+      <input type="text" formControlName="phone" [value]="patient.phone" required/>
+    </div>
+    <div class="form-group">
+      <label>Email </label>
+      <input type="text" formControlName="email" [value]="patient.email" required/>
+    </div>
+    <div class="form-group">
+      <label>Doctor </label>
+      <input type="text" formControlName="doctor" [value]="patient.doctor" required/>
+    </div>
+    <div class="form-group">
+      <label>Insurance </label>
+      <input type="text" formControlName="insurance" [value]="patient.insurance" required/>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="updatePatient()" [disabled]="!patientform.dirty" >Update</button>
+    <button class="btn btn-primary" ng-confirm-click= "Are you sure?" type="button" (click)="deletePatient(patient.id)" >Delete</button>
+    <input class="btn" type="button" [routerLink]="['/doctor']" value="Back">
+  </form>
+</div>

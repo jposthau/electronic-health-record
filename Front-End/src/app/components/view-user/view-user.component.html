@@ -1,0 +1,22 @@
+<div class="container">
+  <form [formGroup]="userform" (ngSubmit)="updateLoginUser()" novalidate>
+    <div *ngIf="validMessage != ''">
+      <h3 style="color: red;" class="has-info" color="red">{{validMessage}}</h3>
+    </div>
+    <div class="form-group">
+      <label>Username </label>
+      <input type="text" formControlName="username" [value]="loginUser.username" required/>
+    </div>
+    <div class="form-group">
+      <label>Password </label>
+      <input type="text" formControlName="password" [value]="loginUser.password" required/>
+    </div>
+    <div class="form-group">
+      <label>Admin Status </label>
+      <input type="text" formControlName="admin" [value]="loginUser.admin" required/>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="updateLoginUser()" [disabled]="!userform.dirty" >Update</button>
+    <button class="btn btn-primary" ng-confirm-click= "Are you sure?" type="button" (click)="deleteLoginUser(loginUser.username)" >Delete</button>
+    <input class="btn" type="button" [routerLink]="['/admin']" value="Back">
+  </form>
+</div>

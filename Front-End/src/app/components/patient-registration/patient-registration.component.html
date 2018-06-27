@@ -1,0 +1,37 @@
+<div class="container">
+  <form [formGroup]="patientform" (ngSubmit)="submitRegistration()" novalidate>
+    <div *ngIf="validMessage != ''">
+      <h3 style="color: red;" class="has-info" color="red">{{validMessage}}</h3>
+    </div>
+    <div class="form-group">
+      <label>Name </label>
+      <input type="text" class="form-control" formControlName="name" required autofocus/>
+    </div>
+    <div class="form-group">
+      <label>SSN </label>
+      <input type="text" class="form-control" formControlName="ssn" placeholder="555-55-5555" pattern="\d{3}-?\d{2}-?\d{4}">
+    </div>
+    <div class="form-group">
+      <label>DOB </label>
+      <input type="date" class="form-control" formControlName="birthDate" required/>
+    </div>
+    <div class="form-group">
+      <label>Phone </label>
+      <input type="text" class="form-control" formControlName="phone" placeholder="555-555-1234" required>
+    </div>
+    <div class="form-group">
+      <label>Email </label>
+      <input type="email" class="form-control" formControlName="email"/>
+    </div>
+    <div class="form-group">
+      <label>Doctor </label>
+      <input type="text" class="form-control" formControlName="doctor"/>
+    </div>
+    <div class="form-group">
+      <label>Insurance </label>
+      <input type="text" class="form-control" formControlName="insurance"/>
+    </div>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+    <a routerLink="/doctor"><button type="button" align="center">Cancel</button></a>
+  </form>
+</div>

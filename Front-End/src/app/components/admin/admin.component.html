@@ -1,0 +1,12 @@
+<div class="container">
+  <table class="table table-bordered table-inverse" border="1" align="center">
+    <tr>
+      <th>Username</th>
+      <th>Admin</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td><a [routerLink]="['/admin/users',user.username]">{{user.username}}</a></td>
+      <td>{{0 == user.admin ? 'No' : 'Yes'}}</td>
+    </tr>
+  </table>
+</div>
