@@ -23,7 +23,9 @@ export class ViewUserComponent implements OnInit {
     this.userform = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      admin: new FormControl('',Validators.required)
+      admin: new FormControl('',Validators.required),
+      doctor: new FormControl('',Validators.required),
+      patient: new FormControl('',Validators.required)
     });
   }
 
@@ -53,6 +55,12 @@ export class ViewUserComponent implements OnInit {
     }
     if (!this.userform.controls['admin'].valid){
       this.userform.controls['admin'].setValue(this.loginUser.admin);
+    }
+    if (!this.userform.controls['doctor'].valid){
+      this.userform.controls['doctor'].setValue(this.loginUser.doctor);
+    }
+    if (!this.userform.controls['patient'].valid){
+      this.userform.controls['patient'].setValue(this.loginUser.patient);
     }
     if (this.userform.valid) {
       this.validMessage = "User updated successfully!";
