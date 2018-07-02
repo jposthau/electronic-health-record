@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <h1 style="text-align:center">Electronic Health Record System</h1>
-    <ul>
+<html class="main">  
+  <header class="navbar">
+    <ul class="navbar">
       <div class="pull-left">
-        <li><a href="" style="font-weight:bold">Home</a></li>
-        <li><a href="patient" style="font-weight:bold">
-          Patient
-        </a></li>
-        <li><a href="doctor" style="font-weight:bold">
-          Doctor
-        </a></li>
-        <li><a href="admin" style="font-weight:bold">
-          Admin
-        </a></li>
+        <li class="navbar"><a href="">Home</a></li>
+        <li class="navbar"><a href="patient">Patient</a></li>
+        <li class="navbar"><a href="doctor">Doctor</a></li>
+        <li class="navbar"><a href="admin">Admin</a></li>
       </div>
       <div class="pull-right">
-        <li><a href="register" style="font-weight:bold">
-          Create Account
-        </a></li>
+        <li><a class="navbar" href="register">Create Account</a></li>
       </div>
     </ul>
+  </header>
+  <body class="body">
+      <router-outlet></router-outlet>
   </body>
 </html>
-<router-outlet></router-outlet>

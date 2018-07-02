@@ -1,46 +1,40 @@
+  <body class="body">
+    <div class="pad">
+      <div class="form-style-9">
+        <form [formGroup]="userform" (ngSubmit)="updateLoginUser()" novalidate>
+          <div *ngIf="validMessage != '' && validMessage != 'User updated successfully!'">
+            <h3 style="color: red;" class="has-info" color="red">{{validMessage}}</h3>
+          </div>
+          <div *ngIf="validMessage == 'User updated successfully!'">
+            <h3 style="color: green;" class="has-info" color="green">{{validMessage}}</h3>
+          </div>
+          <div class="form-group">
+            <b><label>Username </label></b>
+            <input type="text" formControlName="username" [value]="loginUser.username" required/>
+          </div>
+          <br>
+          <div class="form-group">
+            <b><label>Password </label></b>
+            <input type="text" formControlName="password" [value]="loginUser.password" required/>
+          </div>
+          <br>
+          <div class="form-group">
+            <b><label>Admin </label></b>
+            <input type="checkbox" [checked]="checked('admin')" (change)="toggle('admin')">
 
+            <b><label> | Doctor </label></b>
+            <input type="checkbox" [checked]="checked('doctor')" (change)="toggle('doctor')">
 
-<!DOCTYPE html>
-<html>
-<body>
-<div class="container">
-  <form [formGroup]="userform" (ngSubmit)="updateLoginUser()" novalidate>
-    <div *ngIf="validMessage != ''">
-      <h3 style="color: red;" class="has-info" color="red">{{validMessage}}</h3>
+            <b><label> | Patient </label></b>
+            <input type="checkbox" [checked]="checked('patient')" (change)="toggle('patient')">
+          </div>
+          <br>
+          <button class="btn btn-primary" type="button" (click)="updateLoginUser()" >Update</button>
+          <b><label> | </label></b>
+          <input class="btn btn-primary" type="button" [routerLink]="['/admin']" value="Back">
+          <b><label> | </label></b>
+          <button class="btn btn-danger" ng-confirm-click= "Are you sure?" type="button" (click)="deleteLoginUser(loginUser.username)" >Delete</button>
+        </form>
+      </div>
     </div>
-    <div class="form-group">
-      <label>Username </label>
-      <input type="text" formControlName="username" [value]="loginUser.username" required/>
-    </div>
-    <div class="form-group">
-      <label>Password </label>
-      <input type="text" formControlName="password" [value]="loginUser.password" required/>
-    </div>
-    <div class="form-group">
-      <label>Admin </label>
-      <input type="text" formControlName="admin" [value]="loginUser.admin" required/>
-    </div>
-    <div class="form-group">
-      <label>Doctor </label>
-      <input type="text" formControlName="doctor" [value]="loginUser.doctor" required/>
-    </div>
-    <div class="form-group">
-      <label>Patient </label>
-      <input type="text" formControlName="patient" [value]="loginUser.patient" required/>
-    </div>
-    <button class="btn btn-primary" type="button" (click)="updateLoginUser()" [disabled]="!userform.dirty" >Update</button>
-    <button class="btn btn-primary" ng-confirm-click= "Are you sure?" type="button" (click)="deleteLoginUser(loginUser.username)" >Delete</button>
-    <input class="btn" type="button" [routerLink]="['/admin']" value="Back">
-  </form>
-</div>
-<h2>Use JavaScript to Change Text</h2>
-<p>This example writes "Hello JavaScript!" into an HTML element with id="demo":</p>
-
-<p id="demo"></p>
-
-<script>
-document.getElementById("demo").innerHTML = "Hello JavaScript!";
-</script> 
-
-</body>
-</html>
+  </body>

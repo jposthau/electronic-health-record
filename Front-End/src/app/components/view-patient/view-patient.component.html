@@ -1,42 +1,53 @@
-<div class="container">
-  <form [formGroup]="patientform" novalidate>
-    <div *ngIf="validMessage != ''">
-      <h3 style="color: red;" class="has-info" color="red">{{validMessage}}</h3>
+<body class="body">  
+  <div class="pad">
+    <div class="form-style-9">
+      <form [formGroup]="patientform" novalidate>
+        <div *ngIf="validMessage != '' && validMessage != 'Patient updated successfully!'">
+          <h3 style="color: red;" class="has-info" color="red">{{validMessage}}</h3>
+        </div>
+        <div *ngIf="validMessage == 'Patient updated successfully!'">
+          <h3 style="color: green;" class="has-info" color="green">{{validMessage}}</h3>
+        </div>
+        <div class="form-group">
+          <b><label>Patient ID: </label></b>
+          <label>{{patient.id}}</label>
+        </div>
+        <br>
+        <div class="form-group">
+          <b><label>Name </label></b>
+          <input type="text" formControlName="name" [value]="patient.name" required/>
+
+          <b><label> SSN </label></b>
+          <input type="text" formControlName="ssn" [value]="patient.ssn" required/>
+        </div>
+        <br>
+        <div class="form-group">
+          <b><label>Date of Birth </label></b>
+          <input type="text" formControlName="birthDate" [value]="patient.birthDate" required/>
+        </div>
+        <br>
+        <div class="form-group">
+          <b><label>Phone </label></b>
+          <input type="text" formControlName="phone" [value]="patient.phone" required/>
+
+          <b><label> Email </label></b>
+          <input type="text" formControlName="email" [value]="patient.email" required/>
+        </div>
+        <br>
+        <div class="form-group">
+          <b><label>Doctor </label></b>
+          <input type="text" formControlName="doctor" [value]="patient.doctor" required/>
+
+          <b><label> Insurance </label></b>
+          <input type="text" formControlName="insurance" [value]="patient.insurance" required/>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="button" (click)="updatePatient()">Update</button>
+        <b><label> | </label></b>
+        <input class="btn btn-primary" type="button" [routerLink]="['/doctor']" value="Back">
+        <b><label> | </label></b>
+        <button class="btn btn-danger" ng-confirm-click= "Are you sure?" type="button" (click)="deletePatient(patient.id)" >Delete</button>
+      </form>
     </div>
-    <div class="form-group">
-      <label>Patient ID </label>
-      <input type="text" formControlName="id" [value]="patient.id" required/>
-    </div>
-    <div class="form-group">
-      <label>Name </label>
-      <input type="text" formControlName="name" [value]="patient.name" required/>
-    </div>
-    <div class="form-group">
-      <label>SSN </label>
-      <input type="text" formControlName="ssn" [value]="patient.ssn" required/>
-    </div>
-    <div class="form-group">
-      <label>DOB </label>
-      <input type="text" formControlName="birthDate" [value]="patient.birthDate" required/>
-    </div>
-    <div class="form-group">
-      <label>Phone </label>
-      <input type="text" formControlName="phone" [value]="patient.phone" required/>
-    </div>
-    <div class="form-group">
-      <label>Email </label>
-      <input type="text" formControlName="email" [value]="patient.email" required/>
-    </div>
-    <div class="form-group">
-      <label>Doctor </label>
-      <input type="text" formControlName="doctor" [value]="patient.doctor" required/>
-    </div>
-    <div class="form-group">
-      <label>Insurance </label>
-      <input type="text" formControlName="insurance" [value]="patient.insurance" required/>
-    </div>
-    <button class="btn btn-primary" type="button" (click)="updatePatient()" [disabled]="!patientform.dirty" >Update</button>
-    <button class="btn btn-primary" ng-confirm-click= "Are you sure?" type="button" (click)="deletePatient(patient.id)" >Delete</button>
-    <input class="btn" type="button" [routerLink]="['/doctor']" value="Back">
-  </form>
-</div>
+  </div>
+</body>

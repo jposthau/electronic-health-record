@@ -18,7 +18,10 @@ export class PatientService {
   }
 
   getPatient(id: number) {
-    return this.http.get('/server/patients/' + id);
+    this.http.get('/server/patients/' + id).subscribe(data => sessionStorage.setItem('data', JSON.stringify(data)));
+    var patient = sessionStorage.getItem('data');
+    sessionStorage.removeItem('data');
+    return patient;
   }
 
   createPatient(patient) {

@@ -12,29 +12,27 @@ import { Observable } from 'rxjs';
 })
 export class ViewUserComponent implements OnInit {
 
-  loginUser = JSON.parse('{"username":"test","password":"test","admin":0}');
+  loginUser;
   userform: FormGroup;
   validMessage = '';
+  userLoaded = false;
 
   constructor(private loginUserService: LoginUserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getLoginUser(this.route.snapshot.params.username);
     this.userform = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      admin: new FormControl('',Validators.required),
-      doctor: new FormControl('',Validators.required),
-      patient: new FormControl('',Validators.required)
+      username: new FormControl(this.loginUser.username, Validators.required),
+      password: new FormControl(this.loginUser.password, Validators.required),
+      admin: new FormControl(this.loginUser.admin, Validators.required),
+      doctor: new FormControl(this.loginUser.doctor,Validators.required),
+      patient: new FormControl(this.loginUser.patient,Validators.required)
     });
   }
 
   getLoginUser(username: string) {
-    this.loginUserService.getLoginUser(username).subscribe(
-      data => {this.loginUser = data;},
-      err => console.error(err),
-      () => console.log('user loaded')
-    );
+    this.loginUser = JSON.parse(this.loginUserService.getLoginUser(username));
+    this.userLoaded = true;
   }
 
   deleteLoginUser(username: string) {
@@ -47,21 +45,6 @@ export class ViewUserComponent implements OnInit {
   }
 
   updateLoginUser() {
-    if (!this.userform.controls['username'].valid){
-      this.userform.controls['username'].setValue(this.loginUser.username);
-    }
-    if (!this.userform.controls['password'].valid){
-      this.userform.controls['password'].setValue(this.loginUser.password);
-    }
-    if (!this.userform.controls['admin'].valid){
-      this.userform.controls['admin'].setValue(this.loginUser.admin);
-    }
-    if (!this.userform.controls['doctor'].valid){
-      this.userform.controls['doctor'].setValue(this.loginUser.doctor);
-    }
-    if (!this.userform.controls['patient'].valid){
-      this.userform.controls['patient'].setValue(this.loginUser.patient);
-    }
     if (this.userform.valid) {
       this.validMessage = "User updated successfully!";
       this.loginUserService.updateLoginUser(this.userform.value).subscribe(
@@ -71,8 +54,41 @@ export class ViewUserComponent implements OnInit {
         err => console.error(err),
         () => console.log('user edited')
       );
+      this.getLoginUser(this.loginUser.username);
     } else {
       this.validMessage = "Error while updating user.";
+    }
+  }
+
+  toggle(role:string) {
+    if (this.userform.controls[role].value == 1){
+      this.userform.controls[role].setValue(0);
+    }
+    else this.userform.controls[role].setValue(1);
+  }
+
+  checked(role:string) {
+    if(role == 'admin') {
+      if (this.loginUser.admin == 1){
+        return true;
+      }
+      else {
+        return false;
+      }
+    } else if(role == 'doctor') {
+      if (this.loginUser.doctor == 1){
+        return true;
+      }
+      else {
+        return false;
+      }
+    } else if (role == 'patient') {
+      if (this.loginUser.patient == 1){
+        return true;
+      }
+      else {
+        return false;
+      }
     }
   }
 

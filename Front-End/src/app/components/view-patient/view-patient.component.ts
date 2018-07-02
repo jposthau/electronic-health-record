@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class ViewPatientComponent implements OnInit {
 
-  patient = JSON.parse('[{"id":0,"ssn":"000-00-0000","email":"email@address.com","name":"Firstname Lastname","phone":"555-1234","insurance":"some insurance","birthDate":"01-01-1999"}]');
+  patient;
   patientform: FormGroup;
   validMessage = '';
 
@@ -21,23 +21,19 @@ export class ViewPatientComponent implements OnInit {
   ngOnInit() {
     this.getPatient(this.route.snapshot.params.id);
     this.patientform = new FormGroup({
-      id: new FormControl('', Validators.required),
-      name: new FormControl('', Validators.required),
-      ssn: new FormControl('', Validators.required),
-      birthDate: new FormControl('',Validators.required),
-      phone: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      doctor: new FormControl('', Validators.required),
-      insurance: new FormControl('', Validators.required)
+      name: new FormControl(this.patient.name, Validators.required),
+      ssn: new FormControl(this.patient.ssn, Validators.required),
+      birthDate: new FormControl(this.patient.birthDate,Validators.required),
+      phone: new FormControl(this.patient.phone, Validators.required),
+      email: new FormControl(this.patient.email, Validators.required),
+      doctor: new FormControl(this.patient.doctor, Validators.required),
+      insurance: new FormControl(this.patient.insurance, Validators.required)
     });
   }
 
   getPatient(id: number) {
-    this.patientService.getPatient(id).subscribe(
-      data => {this.patient = data;},
-      err => console.error(err),
-      () => console.log('patient loaded')
-    );
+    this.patient = JSON.parse(this.patientService.getPatient(id));
+    console.log(this.patient);
   }
 
   deletePatient(id: number) {
@@ -50,14 +46,6 @@ export class ViewPatientComponent implements OnInit {
   }
 
   updatePatient() {
-    if (!this.patientform.controls['id'].valid){this.patientform.controls['id'].setValue(this.patient.id);}
-    if (!this.patientform.controls['name'].valid){this.patientform.controls['name'].setValue(this.patient.name);}
-    if (!this.patientform.controls['ssn'].valid){this.patientform.controls['ssn'].setValue(this.patient.ssn);}
-    if (!this.patientform.controls['birthDate'].valid){this.patientform.controls['birthDate'].setValue(this.patient.birthDate);}
-    if (!this.patientform.controls['phone'].valid){this.patientform.controls['phone'].setValue(this.patient.phone);}
-    if (!this.patientform.controls['email'].valid){this.patientform.controls['email'].setValue(this.patient.email);}
-    if (!this.patientform.controls['doctor'].valid){this.patientform.controls['doctor'].setValue(this.patient.doctor);}
-    if (!this.patientform.controls['insurance'].valid){this.patientform.controls['insurance'].setValue(this.patient.insurance);}
     if (this.patientform.valid) {
       this.validMessage = "Patient updated successfully!";
       this.patientService.updatePatient(this.patientform.value).subscribe(

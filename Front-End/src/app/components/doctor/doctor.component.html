@@ -1,17 +1,20 @@
-<div class="container">
-  <table class="table table-bordered table-inverse" border="1" align="center">
-    <tr>
-      <th>Patient Name</th>
-      <th>SSN</th>
-      <th>DOB</th>
-    </tr>
-    <tr *ngFor="let patient of patients">
-      <td><a [routerLink]="['/doctor/patients',patient.id]">{{patient.name}}</a></td>
-      <td>{{patient.ssn}}</td>
-      <td>{{patient.birthDate}}</td>
-    </tr>
-  </table>
-</div>
-<div style="text-align:center">
-  <a routerLink="register-patient"><button type="button" align="center">New patient</button></a>
-</div>
+<body class="body">
+  <br>
+    <table class="table table-bordered table-inverse" border="1" align="center">
+      <tr>
+        <th>Patient Name</th>
+        <th>SSN</th>
+        <th>DOB</th>
+      </tr>
+      <tr *ngFor="let patient of patients">
+        <td><a [routerLink]="['/doctor/patients',patient.id]">{{patient.name}}</a></td>
+        <td>{{patient.ssn[7]}}{{patient.ssn[8]}}{{patient.ssn[9]}}{{patient.ssn[10]}}</td>
+        <td>{{patient.birthDate}}</td>
+      </tr>
+    </table>
+    <br>
+  <div style="text-align:center">
+    <a routerLink="register-patient"><button type="button" class="btn btn-primary" align="center">New patient</button></a>
+  </div>
+  <br>
+</body>

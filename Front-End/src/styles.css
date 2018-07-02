@@ -1,1 +1,183 @@
-/* You can add global styles to this file, and also import other style files */
+.body {
+	background-color: #F0F8FF;
+	margin: 0px;
+}
+
+.main {
+	margin: 0px;
+}
+
+.btn-danger {
+	background-color: red;
+	background-image: linear-gradient(pink,red);
+}
+
+.btn-primary {
+	background: linear-gradient(lightgreen, green);
+}
+
+.btn-default {
+	background: linear-gradient(lightgreen, green);
+}
+
+.btn {
+	border: none;
+	padding: 5px 15px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	border-radius: 5px;
+	box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+	transition: box-shadow 0.2s;
+	cursor: pointer;
+	box-shadow: 0px 1px 4px -2px #333;
+	text-shadow: 0px -1px #333;
+}
+
+.btn:hover,
+.btn:focus {
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.form-style-9{
+	max-width: 450px;
+	background: #FAFAFA;
+	padding: 30px;
+	margin: 50px auto;
+	box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+	border-radius: 10px;
+	border: 6px solid #305A72;
+}
+.pad {
+	padding: 50px;
+}
+.form-style-9 ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+.form-style-9 ul li{
+	display: block;
+	margin-bottom: 10px;
+	min-height: 35px;
+}
+.form-style-9 ul li  .field-style{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding: 8px;
+	outline: none;
+	border: 1px solid #B0CFE0;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+
+}.form-style-9 ul li  .field-style:focus{
+	box-shadow: 0 0 5px #B0CFE0;
+	border:1px solid #B0CFE0;
+}
+.form-style-9 ul li .field-split{
+	width: 49%;
+}
+.form-style-9 ul li .field-full{
+	width: 100%;
+}
+.form-style-9 ul li input.align-left{
+	float:left;
+}
+.form-style-9 ul li input.align-right{
+	float:right;
+}
+.form-style-9 ul li textarea{
+	width: 100%;
+	height: 100px;
+}
+
+.table {
+	border-collapse: collapse;
+	border: 1px solid #333;
+	background: #bcd0e4 url("./widget-table-bg.jpg") top left repeat-x;
+}
+.table th, .table td {
+	padding: 0.5em;
+	border: 1px dotted #666;
+}
+.table th
+{
+  border-bottom: 2px solid #333;
+  border-right: 2px solid #333;
+  text-transform: uppercase;
+}
+.table th+th {
+	border-right: 1px dotted #666;
+}
+.table th { 
+	border-right: 2px solid #333; 
+}
+
+/* Set colours for all header cells in the top row */ 
+.table th { color: #000; background-color: #8fadcc; }
+
+/* Set colours for all header cells in the top row except "Product" */
+.table th+th { color: #fff; background-color: #7d98b3; }
+
+/* Set the background colour for all header cells in the left column */
+.table th { background-color: #b8cfe5; }
+
+.table tr:hover th[scope=row], .table tr:hover td
+{ 
+  background-color: #ffff;
+}
+
+.navbar ul#horizontal-list {
+	min-width: 696px;
+	list-style: none;
+}
+.navbar ul#horizontal-list li {
+		display: inline;
+}
+
+.navbar ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background: #28739E;
+}
+
+.navbar li {
+		float: left;
+}
+
+.navbar li a {
+		display: block;
+		color: #e6e6e6;
+		text-align: center;
+		padding: 15px;
+		text-decoration: none;
+}
+
+.navbar li a:hover {
+		color: #FFFF;
+}
+
+.navbar a {
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.navbar {
+	position: relative;
+}
+
+.pull-left { float: left; }
+.pull-right { float: right; }
+.pull-left li, .pull-right li { display: inline-block; }
