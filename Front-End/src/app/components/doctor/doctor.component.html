@@ -7,7 +7,7 @@
         <th>DOB</th>
       </tr>
       <tr *ngFor="let patient of patients">
-        <td><a [routerLink]="['/doctor/patients',patient.id]">{{patient.name}}</a></td>
+        <td><a [routerLink]="['/doctor', docId, 'patients', patient.patientId]">{{patient.name}}</a></td>
         <td>{{patient.ssn[7]}}{{patient.ssn[8]}}{{patient.ssn[9]}}{{patient.ssn[10]}}</td>
         <td>{{patient.birthDate}}</td>
       </tr>

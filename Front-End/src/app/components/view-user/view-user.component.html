@@ -1,4 +1,4 @@
-  <body class="body">
+<!--   <body class="body">
     <div class="pad">
       <div class="form-style-9">
         <form [formGroup]="userform" (ngSubmit)="updateLoginUser()" novalidate>
@@ -35,6 +35,39 @@
           <b><label> | </label></b>
           <button class="btn btn-danger" ng-confirm-click= "Are you sure?" type="button" (click)="deleteLoginUser(loginUser.username)" >Delete</button>
         </form>
+      </div>
+    </div>
+  </body>
+ -->
+
+
+   <body class="body">
+    <div class="pad">
+      <div class="form-style-9">
+
+          <div class="form-group">
+            <b><label>Username: </label></b>
+            <label>{{user?.username}}</label>
+
+            <b><label style="padding-left: 100px">Password: </label></b>
+            <label>{{user?.password}}</label>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <b><label>Roles: </label></b>
+            <label>
+              {{0 == user?.admin ? '' : 'Admin '}}
+              {{0 == user?.doctor ? '' : 'Doctor '}}
+              {{0 == user?.patient ? '' : 'Patient'}}
+            </label>
+          </div>
+          <br>
+
+          <input class="btn btn-primary" type="button" [routerLink]="['/admin']" value="Edit">
+          <b><label> | </label></b>
+          <input class="btn btn-primary" type="button" [routerLink]="['/admin']" value="Back">
+
       </div>
     </div>
   </body>

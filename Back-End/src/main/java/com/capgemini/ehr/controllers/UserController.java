@@ -14,51 +14,54 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capgemini.ehr.models.LoginUser;
-import com.capgemini.ehr.repositories.LoginUserRepository;
+import com.capgemini.ehr.models.User;
+import com.capgemini.ehr.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/users")
-public class LoginUserController {
+public class UserController {
 	
 	@Autowired
-	private LoginUserRepository loginUserRepository;
+	private UserRepository userRepository;
 	
-
+	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping
-	public List<LoginUser> list(){
-		return loginUserRepository.findAll();
+	public List<User> list(){
+		return userRepository.findAll();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
-	public void create(@RequestBody LoginUser loginUser) {
+	public void create(@RequestBody User user) {
 		try {
-			loginUserRepository.save(loginUser);
+			userRepository.save(user);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
+	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@PutMapping
 	@ResponseStatus(HttpStatus.OK)
-	public void update(@RequestBody LoginUser loginUser) {
+	public void update(@RequestBody User user) {
 		try {
-			loginUserRepository.save(loginUser);
+			userRepository.save(user);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
-	@GetMapping("/{username}")
-	public LoginUser get(@PathVariable("username") String username) {
-		return loginUserRepository.getOne(username);
+	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@GetMapping("/{userId}")
+	public User get(@PathVariable("userId") Long userId) {
+		return userRepository.getOne(userId);
 	}
 	
-	@DeleteMapping("/{username}")
-	public String delete(@PathVariable("username") String username) {
+	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@DeleteMapping("/{userId}")
+	public String delete(@PathVariable("userId") Long userId) {
 		try {
-			loginUserRepository.deleteById(username);
+			userRepository.deleteById(userId);
 		} catch (Exception e) {
 			return e.getMessage();
 		}

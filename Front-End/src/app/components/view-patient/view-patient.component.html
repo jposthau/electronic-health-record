@@ -1,4 +1,4 @@
-<body class="body">  
+<!-- <body class="body">  
   <div class="pad">
     <div class="form-style-9">
       <form [formGroup]="patientform" novalidate>
@@ -35,19 +35,60 @@
         </div>
         <br>
         <div class="form-group">
-          <b><label>Doctor </label></b>
-          <input type="text" formControlName="doctor" [value]="patient.doctor" required/>
-
           <b><label> Insurance </label></b>
           <input type="text" formControlName="insurance" [value]="patient.insurance" required/>
         </div>
         <br>
-        <button class="btn btn-primary" type="button" (click)="updatePatient()">Update</button>
+        <button class="btn btn-primary" type="button" (click)="updatePatient()" disabled>Update</button>
         <b><label> | </label></b>
-        <input class="btn btn-primary" type="button" [routerLink]="['/doctor']" value="Back">
+        <input class="btn btn-primary" type="button" [routerLink]="['/doctor', docId]" value="Back">
         <b><label> | </label></b>
-        <button class="btn btn-danger" ng-confirm-click= "Are you sure?" type="button" (click)="deletePatient(patient.id)" >Delete</button>
+        <button class="btn btn-danger" ng-confirm-click= "Are you sure?" type="button" (click)="removePatient()">
+          Delete
+        </button>
       </form>
+    </div>
+  </div>
+</body> -->
+
+
+<body class="body">  
+  <div class="pad">
+    <div class="form-style-9">
+      <div class="form-group">
+        <b><label>Patient ID: </label></b>
+        <label>{{patient?.patientId}}</label>
+      </div>
+      <br>
+      <div class="form-group">
+        <b><label>Name: </label></b>
+        <label>{{patient?.name}}</label>
+
+        <b><label style="padding-left: 100px">SSN: </label></b>
+        <label>{{patient?.ssn}}</label>
+      </div>
+      <br>
+      <div class="form-group">
+        <b><label>Date of Birth: </label></b>
+        <label>{{patient?.birthDate}}</label>
+      </div>
+      <br>
+      <div class="form-group">
+        <b><label>Phone: </label></b>
+        <label>{{patient?.phone}}</label>
+
+        <b><label style="padding-left: 100px">Email: </label></b>
+        <label>{{patient?.email}}</label>
+      </div>
+      <br>
+      <div class="form-group">
+        <b><label> Insurance: </label></b>
+        <label>{{patient?.insurance}}</label>
+      </div>
+      <br>
+      <input class="btn btn-primary" type="button" [routerLink]="['/doctor', docId]" value="Edit">
+      <b><label> | </label></b>
+      <input class="btn btn-primary" type="button" [routerLink]="['/doctor', docId]" value="Back">
     </div>
   </div>
 </body>

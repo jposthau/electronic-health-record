@@ -7,7 +7,7 @@ import { ViewPatientComponent } from './components/view-patient/view-patient.com
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { PatientRegistrationComponent } from './components/patient-registration/patient-registration.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
-import { PatientComponent } from './components/patient/patient.component'
+import { PatientComponent } from './components/patient/patient.component';
 
 const routes: Routes = [
   {
@@ -18,12 +18,12 @@ const routes: Routes = [
     path: 'register',
     component: UserRegistrationComponent
   },
+  // {
+  //   path: 'doctor/register-patient',
+  //   component: PatientRegistrationComponent,
+  // },
   {
-    path: 'doctor/register-patient',
-    component: PatientRegistrationComponent,
-  },
-  {
-    path:'doctor/patients/:id',
+    path:'doctor/:docId/patients/:patId',
     component: ViewPatientComponent,
   },
   {
@@ -35,7 +35,7 @@ const routes: Routes = [
     component:AdminComponent,
   },
   {
-    path: 'doctor',
+    path: 'doctor/:id',
     component:DoctorComponent,
   },
   {

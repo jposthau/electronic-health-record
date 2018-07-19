@@ -12,27 +12,26 @@ import { Observable } from 'rxjs';
 })
 export class ViewUserComponent implements OnInit {
 
-  loginUser;
-  userform: FormGroup;
+  public user;
+  public userform: FormGroup;
   validMessage = '';
-  userLoaded = false;
 
   constructor(private loginUserService: LoginUserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getLoginUser(this.route.snapshot.params.username);
     this.userform = new FormGroup({
-      username: new FormControl(this.loginUser.username, Validators.required),
-      password: new FormControl(this.loginUser.password, Validators.required),
-      admin: new FormControl(this.loginUser.admin, Validators.required),
-      doctor: new FormControl(this.loginUser.doctor,Validators.required),
-      patient: new FormControl(this.loginUser.patient,Validators.required)
+      username: new FormControl(Validators.required),
+      password: new FormControl(Validators.required),
+      admin: new FormControl(Validators.required),
+      doctor: new FormControl(Validators.required),
+      patient: new FormControl(Validators.required)
     });
   }
 
   getLoginUser(username: string) {
-    this.loginUser = JSON.parse(this.loginUserService.getLoginUser(username));
-    this.userLoaded = true;
+    this.loginUserService.getLoginUser(username).subscribe(
+      data => {this.user = data;});
   }
 
   deleteLoginUser(username: string) {
@@ -54,7 +53,7 @@ export class ViewUserComponent implements OnInit {
         err => console.error(err),
         () => console.log('user edited')
       );
-      this.getLoginUser(this.loginUser.username);
+      this.getLoginUser(this.user.username);
     } else {
       this.validMessage = "Error while updating user.";
     }
@@ -67,23 +66,23 @@ export class ViewUserComponent implements OnInit {
     else this.userform.controls[role].setValue(1);
   }
 
-  checked(role:string) {
+  checked(user, role:string) {
     if(role == 'admin') {
-      if (this.loginUser.admin == 1){
+      if (user.admin == 1){
         return true;
       }
       else {
         return false;
       }
     } else if(role == 'doctor') {
-      if (this.loginUser.doctor == 1){
+      if (user.doctor == 1){
         return true;
       }
       else {
         return false;
       }
     } else if (role == 'patient') {
-      if (this.loginUser.patient == 1){
+      if (user.patient == 1){
         return true;
       }
       else {

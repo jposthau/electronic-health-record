@@ -18,9 +18,10 @@ export class LoginUserService {
   }
 
   getLoginUser(username: string) {
-    this.http.get('/server/users/' + username).subscribe(data => sessionStorage.setItem('data', JSON.stringify(data)));
-    var user = sessionStorage.getItem('data');
-    sessionStorage.removeItem('data');
+    sessionStorage.removeItem("user");
+    this.http.get('/server/users/' + username).subscribe(data => sessionStorage.setItem("user", JSON.stringify(data)));
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    //sessionStorage.removeItem("user");
     return user;
   }
 

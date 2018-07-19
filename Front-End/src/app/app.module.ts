@@ -14,6 +14,8 @@ import { ViewPatientComponent } from './components/view-patient/view-patient.com
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { PatientComponent } from './components/patient/patient.component';
+import { UserComponent } from './components/user/user.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { PatientComponent } from './components/patient/patient.component';
     PatientRegistrationComponent,
     UserRegistrationComponent,
     DoctorComponent,
-    PatientComponent
+    PatientComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

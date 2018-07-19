@@ -26,22 +26,22 @@ export class PatientRegistrationComponent implements OnInit {
     });
   }
 
-  submitRegistration() {
+  // submitRegistration() {
 
-    if (this.patientform.valid) {
-      this.validMessage = "Your patient registration has been submitted. Thank you!";
-      this.patientService.createPatient(this.patientform.value).subscribe(
-        data => {
-          this.patientform.reset();
-          return true;
-        },
-        error => {
-          return Observable.throw(error);
-        }
-      )
-    } else {
-      this.validMessage = "Please fill out the form before submitting!";
-    }
-  }
+  //   if (this.patientform.valid) {
+  //     this.validMessage = "Your patient registration has been submitted. Thank you!";
+  //     this.patientService.createPatient(this.patientform.value).subscribe(
+  //       data => {
+  //         this.patientform.reset();
+  //         return true;
+  //       },
+  //       error => {
+  //         return Observable.throw(error);
+  //       }
+  //     )
+  //   } else {
+  //     this.validMessage = "Please fill out the form before submitting!";
+  //   }
+  // }
 
 }
