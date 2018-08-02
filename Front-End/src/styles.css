@@ -1,6 +1,7 @@
 .body {
 	background-color: #F0F8FF;
 	margin: 0px;
+	padding-top: 10px;
 }
 
 .main {
@@ -150,7 +151,38 @@
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
-		background: #28739E;
+		background: #493c32;
+}
+
+.navbar div {
+	background: #493c32;
+	padding-left: 10px;
+}
+
+.navbar button {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	height: 35px;
+	width: 80px;
+	border: none;
+	background: #38a9e0;
+	color: white;
+	font-family: "Gill Sans MT";
+	font-size: 17px;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+.navbar button:hover {
+	cursor: pointer;
+	background-color: #56C1F4;
+}
+
+@font-face {
+  font-family: "Gill Sans MT";
+  font-style: normal;
+  font-weight: bold;
+  src: url(/assets/fonts/Gill Sans MT.ttf) format("embedded-opentype");
 }
 
 .navbar li {
@@ -159,10 +191,12 @@
 
 .navbar li a {
 		display: block;
-		color: #e6e6e6;
+		color: #a49c83;
 		text-align: center;
-		padding: 15px;
+		padding-left: 3px;
+		padding-right: 3px;
 		text-decoration: none;
+		cursor: pointer;
 }
 
 .navbar li a:hover {
@@ -170,8 +204,19 @@
 }
 
 .navbar a {
-	font-family: sans-serif;
-	font-weight: bold;
+	//font-family: sans-serif;
+	//font-weight: bold;
+}
+
+.navbar h2 {
+	padding: 30px;
+	font-family: "Gill Sans MT";
+	cursor: default;
+	color: white;
+	font-size: 28;
+}
+.navbar h2:hover {
+	color: white;
 }
 
 .navbar {
@@ -181,3 +226,8 @@
 .pull-left { float: left; }
 .pull-right { float: right; }
 .pull-left li, .pull-right li { display: inline-block; }
+
+.login-error { 
+	text-align: center;
+	color: red;
+}

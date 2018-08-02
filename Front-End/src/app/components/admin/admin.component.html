@@ -10,14 +10,14 @@
         <th>Roles</th>
       </tr>
       <tr *ngFor="let user of users">
-        <td><b><a [routerLink]="['/admin/users',user.username]">{{user.username}}</a></b></td>
-        <td>
-          {{0 == user.admin ? '' : '{ADMIN}'}}
-          {{0 == user.doctor ? '' : '{DOCTOR}'}}
-          {{0 == user.patient ? '' : '{PATIENT}'}}
-        </td>
+        <td><b><a [routerLink]="['/admin/users',user.id]">{{user.username}}</a></b></td>
+        <td>{{user.roles[0].role}}</td>
+      </tr>
+      <tr>
+        <td><b><a [routerLink]="['/register']">ADD NEW USER</a></b></td>
       </tr>
     </table>
     <br>
+    <input class="btn btn-primary" type="button" style="align-self:  center;" [routerLink]="['/register']" value="New User">
   </body>
 </html>

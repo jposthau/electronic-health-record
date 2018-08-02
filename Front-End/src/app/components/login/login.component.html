@@ -1,0 +1,20 @@
+<br>
+<div class="form-style-9">
+	<div class="login-error" [hidden]="!error">
+		Invalid username and/or password. Please try again.
+	</div>
+	<br>
+	<form role="form" (submit)="login()">
+		<div class="form-group">
+			<label for="username">Username:</label>
+			<input type="text" class="form-control" id="username" name="username" [(ngModel)]="credentials.username" autofocus/>
+		</div>
+		<br>
+		<div class="form-group">
+			<label for="password">Password:</label> <input type="password"
+				class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
+		</div>
+		<br>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>

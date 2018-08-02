@@ -1,12 +1,14 @@
 package com.capgemini.ehr.models;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -34,6 +36,7 @@ public class User implements Serializable{
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="user_id")
 	private Long id;
 	
@@ -48,7 +51,7 @@ public class User implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name ="role_id"))
-	private Set<Role> roles;
+	private List<Role> roles;
 	
 	public Long getId() {
 		return id;
@@ -82,14 +85,12 @@ public class User implements Serializable{
 		this.active = active;
 	}
 
-	public Set<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
 	
 }

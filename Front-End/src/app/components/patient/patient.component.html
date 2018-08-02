@@ -1,5 +1,40 @@
-<body class="body">
-	<p>
-	  patient works!
-	</p>
+<body class="body">  
+  <div class="pad">
+    <div class="form-style-9">
+      <div class="form-group">
+        <b><label>Patient ID: </label></b>
+        <label>{{patient?.patId}}</label>
+      </div>
+      <br>
+      <div class="form-group">
+        <b><label>Name: </label></b>
+        <label>{{patient?.name}}</label>
+
+        <b><label style="padding-left: 100px">SSN: </label></b>
+        <label>{{patient?.ssn}}</label>
+      </div>
+      <br>
+      <div class="form-group">
+        <b><label>Date of Birth: </label></b>
+        <label>{{patient?.dob}}</label>
+      </div>
+      <br>
+      <div class="form-group">
+        <b><label>Phone: </label></b>
+        <label>{{patient?.phone}}</label>
+
+        <b><label style="padding-left: 100px">Email: </label></b>
+        <label>{{patient?.email}}</label>
+      </div>
+      <br>
+      <div class="form-group">
+        <b><label> Insurance: </label></b>
+        <label>{{patient?.insurance}}</label>
+      </div>
+      <br>
+      <!-- <input class="btn btn-primary" type="button" [routerLink]="['/doctor', docId]" value="Edit">
+      <b><label> | </label></b> -->
+<!--       <input class="btn btn-primary" type="button" [routerLink]="['/doctor', docId]" value="Back"> -->
+    </div>
+  </div>
 </body>

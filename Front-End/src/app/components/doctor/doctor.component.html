@@ -1,5 +1,5 @@
 <body class="body">
-  <br>
+  <br><br>
     <table class="table table-bordered table-inverse" border="1" align="center">
       <tr>
         <th>Patient Name</th>
@@ -7,14 +7,14 @@
         <th>DOB</th>
       </tr>
       <tr *ngFor="let patient of patients">
-        <td><a [routerLink]="['/doctor', docId, 'patients', patient.patientId]">{{patient.name}}</a></td>
-        <td>{{patient.ssn[7]}}{{patient.ssn[8]}}{{patient.ssn[9]}}{{patient.ssn[10]}}</td>
-        <td>{{patient.birthDate}}</td>
+        <td><a [routerLink]="['/doctor/', username, 'patients', patient.patId]">{{patient.name}}</a></td>
+        <td>***-**-{{patient.ssn[7]}}{{patient.ssn[8]}}{{patient.ssn[9]}}{{patient.ssn[10]}}</td>
+        <td>{{patient.dob}}</td>
       </tr>
     </table>
     <br>
-  <div style="text-align:center">
+<!--   <div style="text-align:center">
     <a routerLink="register-patient"><button type="button" class="btn btn-primary" align="center">New patient</button></a>
-  </div>
+  </div> -->
   <br>
 </body>

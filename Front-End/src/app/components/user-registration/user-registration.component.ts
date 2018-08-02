@@ -10,28 +10,32 @@ import { Observable } from 'rxjs';
 })
 export class UserRegistrationComponent implements OnInit {
   userform: FormGroup;
+  roleform: FormGroup;
   validMessage: string ="";
 
-  constructor(private loginUserServce: LoginUserService) { }
+  constructor(private loginUserService: LoginUserService) { }
 
   ngOnInit() {
     this.userform = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
+    this.roleform = new FormGroup({
+      role: new FormControl('', Validators.required)
+    });
   }
 
   submitRegistration() {
 
-    if (this.userform.valid) {
+    if (this.userform.valid && this.roleform.valid) {
       this.validMessage = "Your user registration has been submitted. Thank you!";
-      this.loginUserServce.createLoginUser(this.userform.value).subscribe(
+      this.loginUserService.createLoginUser(this.userform.value, this.roleform.value).subscribe(
         data => {
           this.userform.reset();
           return true;
         },
         error => {
-          return Observable.throw(error);
+          console.log(error);
         }
       )
     } else {

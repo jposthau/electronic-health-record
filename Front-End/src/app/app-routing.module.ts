@@ -8,10 +8,16 @@ import { ViewUserComponent } from './components/view-user/view-user.component';
 import { PatientRegistrationComponent } from './components/patient-registration/patient-registration.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { PatientComponent } from './components/patient/patient.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
+    component:HomeComponent
+  },
+  {
+    path: 'home',
     component:HomeComponent
   },
   {
@@ -23,7 +29,7 @@ const routes: Routes = [
   //   component: PatientRegistrationComponent,
   // },
   {
-    path:'doctor/:docId/patients/:patId',
+    path:'doctor/:username/patients/:patId',
     component: ViewPatientComponent,
   },
   {
@@ -35,12 +41,24 @@ const routes: Routes = [
     component:AdminComponent,
   },
   {
-    path: 'doctor/:id',
+    path: 'doctor/:username',
     component:DoctorComponent,
   },
+  // {
+  //   path: 'doctor',
+  //   component:DoctorComponent,
+  // },
   {
-    path: 'patient',
+    path: 'patient/:username',
     component:PatientComponent,
+  },
+  {
+    path: 'login',
+    component:LoginComponent
+  },
+  {
+    path: 'unauthorized',
+    component:UnauthorizedComponent
   }
 ];
 

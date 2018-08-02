@@ -13,25 +13,28 @@ export class PatientService {
 
   constructor(private http:HttpClient) { }
 
-  getDocPats(doctorId: number) {
-    return this.http.get('/server/doctor/' + doctorId + '/patients');
-  }
-
-  getADocPat(doctorId: number, patientId: number) {
-    return this.http.get('/server/doctor/' + doctorId + '/patients/' + patientId);
-  }
-
-  createDocPat(doctorId: number, docPat) {
-    let body = JSON.stringify(docPat);
-    return this.http.post('server/doctor/' + doctorId + '/patients', body, httpOptions);
-  }
-
-  deleteDocPat(doctorId: number, patientId:number) {
-    return this.http.delete('server/doctor/' + doctorId + '/patients/delete/' + patientId);
-  }
-
   getPatient(id: number) {
     return this.http.get('/server/patient/' + id);
+  }
+
+  getPatientsDoctor(id: number) {
+    return this.http.get('/server/patient/' + id + '/doctor');
+  }
+
+  getDoctor(id: number) {
+    return this.http.get('/server/doctor/' + id);
+  }
+
+  getDoctorsPatients(id: number) {
+    return this.http.get('/server/doctor/' + id + '/patients');
+  }
+
+  getDoctorsPatient(docId: number, patId: number) {
+    return this.http.get('/server/doctor/' + docId + '/patients/' + 'patId');
+  }
+
+  getAllPatients(id: number) {
+    return this.http.get('/server/doctor/' + id + '/patients/all');
   }
 
   createPatient(patient) {

@@ -33,7 +33,7 @@ dependencies {
     compile 'mysql:mysql-connector-java:8.0.11'
     compile 'org.apache.commons:commons-dbcp2:2.1.1'
     compile 'javax.xml.bind:jaxb-api:2.3.0'
-
+	compile 'org.json:json:20090211'
 	compile('org.hibernate:hibernate-core')
 	compile('org.springframework:spring-jdbc')
 }

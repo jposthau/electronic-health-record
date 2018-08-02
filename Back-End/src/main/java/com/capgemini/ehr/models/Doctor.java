@@ -14,15 +14,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="doctors")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "docId", "username"})
 public class Doctor {
 	
-	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name ="doc_id")
@@ -31,7 +29,7 @@ public class Doctor {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+		
 	@Column(name = "name")
 	private String name;
 	
@@ -79,8 +77,6 @@ public class Doctor {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-	
-	
+	}	
 
 }

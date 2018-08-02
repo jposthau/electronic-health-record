@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginUserService } from '../../service/loginuser.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AppService } from '../../app.service';
+
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent {
   public users;
 
-  constructor(private loginUserService: LoginUserService) { }
+  constructor(private router: Router, private app: AppService, private http: HttpClient) {
+    http.get('server/users').subscribe(
+      data => this.users = data,
+      err => {
+        console.log('error! ', err);
+        if(err.status == '401' || err.status == '403'){
+          router.navigateByUrl('unauthorized');
+        }
 
-  ngOnInit() {
-    this.getLoginUsers();
+      });
   }
 
-  getLoginUsers() {
-    this.loginUserService.getLoginUsers().subscribe(
-      data => { this.users = data},
-      err => console.error(err),
-      () => console.log('users loaded')
-    );
-  }
 }

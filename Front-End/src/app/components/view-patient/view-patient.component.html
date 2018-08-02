@@ -57,7 +57,7 @@
     <div class="form-style-9">
       <div class="form-group">
         <b><label>Patient ID: </label></b>
-        <label>{{patient?.patientId}}</label>
+        <label>{{patient?.patId}}</label>
       </div>
       <br>
       <div class="form-group">
@@ -70,7 +70,7 @@
       <br>
       <div class="form-group">
         <b><label>Date of Birth: </label></b>
-        <label>{{patient?.birthDate}}</label>
+        <label>{{patient?.dob}}</label>
       </div>
       <br>
       <div class="form-group">
@@ -86,9 +86,9 @@
         <label>{{patient?.insurance}}</label>
       </div>
       <br>
-      <input class="btn btn-primary" type="button" [routerLink]="['/doctor', docId]" value="Edit">
-      <b><label> | </label></b>
-      <input class="btn btn-primary" type="button" [routerLink]="['/doctor', docId]" value="Back">
+      <!-- <input class="btn btn-primary" type="button" [routerLink]="['/doctor', docId]" value="Edit">
+      <b><label> | </label></b> -->
+      <input class="btn btn-primary" type="button" [routerLink]="['/doctor/', username]" value="Back">
     </div>
   </div>
 </body>

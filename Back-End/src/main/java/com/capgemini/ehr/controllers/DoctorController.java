@@ -13,9 +13,10 @@ import com.capgemini.ehr.models.Doctor;
 import com.capgemini.ehr.models.Patient;
 import com.capgemini.ehr.repositories.DoctorRepository;
 import com.capgemini.ehr.repositories.PatientRepository;
+import com.capgemini.ehr.repositories.UserRepository;
 
 @RestController
-@RequestMapping("/doctor/{doctorId}")
+@RequestMapping("/doctor/{username}")
 public class DoctorController {
 
 	@Autowired
@@ -24,20 +25,23 @@ public class DoctorController {
 	@Autowired
 	private PatientRepository patientRepository;
 	
+	@Autowired
+	private UserRepository userRepo;
+	
 	@GetMapping
-	public Optional<Doctor> getDoctor(@PathVariable("doctorId") long id){
-		return doctorRepository.findById(id);
+	public Optional<Doctor> getDoctor(@PathVariable("username") String username){
+		return doctorRepository.findByUser(userRepo.findByUsername(username).get());
 	}
 	
 	@GetMapping("/patients")
-	public List<Patient> getPatients(@PathVariable("doctorId") long id){
-		return this.doctorRepository.getOne(id).getPatients();
+	public List<Patient> getPatients(@PathVariable("username") String username){
+		return this.doctorRepository.findByUser(userRepo.findByUsername(username).get()).get().getPatients();
 	}
 	
 	@GetMapping("/patients/{patientId}")
-	public Patient getPatient(@PathVariable("doctorId") long docId, @PathVariable("patientId") long patId){
+	public Patient getPatient(@PathVariable("username") String username, @PathVariable("patientId") long patId){
 		Patient p = this.patientRepository.getOne(patId);
-		Doctor d = this.doctorRepository.getOne(docId);
+		Doctor d = this.doctorRepository.findByUser(userRepo.findByUsername(username).get()).get();
 		if(d.getPatients().contains(p))
 			return p;
 		return null;

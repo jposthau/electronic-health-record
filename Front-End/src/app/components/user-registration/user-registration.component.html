@@ -20,6 +20,14 @@
           <input type="password" required/>
         </div>
         <br>
+
+        <form [formGroup]="roleform" novalidate>
+          <div class="form-group">
+            <b><label>Role </label></b>
+          <input type="text" class="form-control" formControlName="role" required/>
+        </div>
+        </form>
+
         <button type="submit" class="btn btn-primary" >Submit</button>
       </form>
     </div>

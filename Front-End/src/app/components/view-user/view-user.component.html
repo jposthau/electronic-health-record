@@ -50,22 +50,20 @@
             <label>{{user?.username}}</label>
 
             <b><label style="padding-left: 100px">Password: </label></b>
-            <label>{{user?.password}}</label>
+            <label>*****</label>
           </div>
           <br>
 
           <div class="form-group">
-            <b><label>Roles: </label></b>
+            <b><label>Role: </label></b>
             <label>
-              {{0 == user?.admin ? '' : 'Admin '}}
-              {{0 == user?.doctor ? '' : 'Doctor '}}
-              {{0 == user?.patient ? '' : 'Patient'}}
+              {{user?.roles[0].role}}
             </label>
           </div>
           <br>
 
-          <input class="btn btn-primary" type="button" [routerLink]="['/admin']" value="Edit">
-          <b><label> | </label></b>
+          <!-- <input class="btn btn-primary" type="button" [routerLink]="['/admin']" value="Edit">
+          <b><label> | </label></b> -->
           <input class="btn btn-primary" type="button" [routerLink]="['/admin']" value="Back">
 
       </div>

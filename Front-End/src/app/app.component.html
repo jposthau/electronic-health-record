@@ -2,15 +2,23 @@
   <header class="navbar">
     <ul class="navbar">
       <div class="pull-left">
-        <li class="navbar"><a href="">Home</a></li>
-        <li class="navbar"><a href="patient">Patient</a></li>
-        <li class="navbar"><a href="doctor">Doctor</a></li>
-        <li class="navbar"><a href="admin">Admin</a></li>
+        <li><a><h2 class="navbar">Electronic Health Record System</h2></a></li>
       </div>
       <div class="pull-right">
-        <li><a class="navbar" href="register">Create Account</a></li>
+        <div [hidden]="loggedIn">
+          <li><a class="navbar" href="login">Sign In</a></li>
+        </div>
+        <div [hidden]="!loggedIn">
+          <li><a class="navbar" (click)="logout()" >Sign Out</a></li>
+        </div>
       </div>
     </ul>
+    <div class="navbar">
+      <button class="navbar" [routerLink]="['']">Home</button>
+      <button class="navbar" [routerLink]="['/patient/', username]">Patient</button>
+      <button class="navbar" [routerLink]="['/doctor/', username]">Doctor</button>
+      <button class="navbar" [routerLink]="['/admin']">Admin</button>
+    </div>
   </header>
   <body class="body">
       <router-outlet></router-outlet>
