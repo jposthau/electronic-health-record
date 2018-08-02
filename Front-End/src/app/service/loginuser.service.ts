@@ -29,7 +29,7 @@ export class LoginUserService {
     let r = JSON.stringify(role);
     var str = r.substring(1,r.length-2);
     var str2 = u.substring(0,u.length-1);
-    var str3 = str2+',"roles":[{'+str+'}]}');
+    var str3 = str2+',"roles":[{'+str+'}]}';
     return this.http.post('/server/users', str3, httpOptions);
   }
 

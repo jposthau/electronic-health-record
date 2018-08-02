@@ -2,22 +2,20 @@
   <body class="body"> 
     <br>
     <div align="center">
-    <b><label>List of Users</label></b>
+      <b><label>List of Users</label></b>
+      <table class="table">
+        <tr>
+          <th>Username</th>
+          <th>Roles</th>
+        </tr>
+        <tr *ngFor="let user of users">
+          <td><b><a [routerLink]="['/admin/users',user.id]">{{user.username}}</a></b></td>
+          <td>{{user.roles[0].role}}</td>
+        </tr>
+      </table>
+      <br>
+      <input class="btn btn-primary" type="button" align="center" [routerLink]="['/register']" value="New User">
     </div>
-    <table class="table" align="center" >
-      <tr>
-        <th>Username</th>
-        <th>Roles</th>
-      </tr>
-      <tr *ngFor="let user of users">
-        <td><b><a [routerLink]="['/admin/users',user.id]">{{user.username}}</a></b></td>
-        <td>{{user.roles[0].role}}</td>
-      </tr>
-      <tr>
-        <td><b><a [routerLink]="['/register']">ADD NEW USER</a></b></td>
-      </tr>
-    </table>
     <br>
-    <input class="btn btn-primary" type="button" style="align-self:  center;" [routerLink]="['/register']" value="New User">
   </body>
 </html>

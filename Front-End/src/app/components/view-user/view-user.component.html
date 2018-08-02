@@ -62,9 +62,9 @@
           </div>
           <br>
 
-          <!-- <input class="btn btn-primary" type="button" [routerLink]="['/admin']" value="Edit">
-          <b><label> | </label></b> -->
+          <input class="btn btn-primary" type="button" [routerLink]="['/admin']" value="Edit">
           <input class="btn btn-primary" type="button" [routerLink]="['/admin']" value="Back">
+          <button class="btn btn-danger" ng-confirm-click= "Are you sure?" type="button" (click)="deleteLoginUser(user.id)" >Delete</button>
 
       </div>
     </div>

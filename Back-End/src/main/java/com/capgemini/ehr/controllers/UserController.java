@@ -44,6 +44,7 @@ public class UserController {
 		return userRepository.findAll();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
 	public void create(@RequestBody String request) {
@@ -75,7 +76,6 @@ public class UserController {
 		try {
 			userRepository.save(user);
 			userRole.setUserId(user.getId());
-			//System.out.println(user.getId());
 			userRoleRepository.save(userRole);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -85,9 +85,36 @@ public class UserController {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@PutMapping
 	@ResponseStatus(HttpStatus.OK)
-	public void update(@RequestBody User user) {
+	public void update(@RequestBody String request) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		JSONObject userObj = null;
+		User user = new User();
+		UserRole userRole = new UserRole();
+		
+		String roles = "{"+request.substring(request.indexOf("role")-1, request.length()-1);
+		String role = roles.substring(roles.indexOf("[")+10, roles.length()-2);
+		
+		try {
+			userObj = new JSONObject(request.substring(0, request.indexOf("roles")-2)+'}');
+		} catch (JSONException e1) {
+			System.out.println("1");
+			e1.getMessage();
+		}
+		try {
+			user.setUsername(userObj.getString("username"));
+			user.setPassword(userObj.getString("password"));
+		} catch (JSONException e) {
+			System.out.println("3");
+			e.getMessage();
+		}
+		userRole.setRoleId(roleRepository.findByRole(role).getId());
+		String tmp = user.getPassword();
+		user.setPassword(encoder.encode(tmp));
+		user.setActive(true);
 		try {
 			userRepository.save(user);
+			userRole.setUserId(user.getId());
+			userRoleRepository.save(userRole);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -103,6 +130,7 @@ public class UserController {
 	@DeleteMapping("/{userId}")
 	public String delete(@PathVariable("userId") Long userId) {
 		try {
+			userRoleRepository.deleteById(userRoleRepository.findByUserId(userId).get().getId());
 			userRepository.deleteById(userId);
 		} catch (Exception e) {
 			return e.getMessage();
